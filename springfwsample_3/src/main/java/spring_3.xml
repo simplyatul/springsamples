@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+    <bean id="triangle" class="org.simplyatul.Triangle" name="triangle-name">
+    <property name="points">
+        <list>
+            <ref bean="point0"/>
+            <ref bean="point1"/>
+            <ref bean="point2"/>
+        </list>
+<!--    Similary you can set and map -->
+    </property>
+    </bean>
+
+    <bean id="point0" class="org.simplyatul.Point">
+        <property name="x" value="0" />
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="point1" class="org.simplyatul.Point">
+        <property name="x" value="-40" />
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="point2" class="org.simplyatul.Point">
+        <property name="x" value="40" />
+        <property name="y" value="0" />
+    </bean>
+
+</beans>

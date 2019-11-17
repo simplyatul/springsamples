@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+    <bean id="point0" class="org.simplyatul.Point">
+        <property name="x" value="0" />
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="triangle" class="org.simplyatul.Triangle" name="triangle-name">
+<!--         <property name="pointA" ref="point0" /> -->
+<!--         <property name="pointA" ref="point0-name" /> -->
+        <property name="pointA" ref="point0-alias" />
+<!--    So ref tag can refer to all three - id or name or alias -->
+<!--    But good practice is use id -->
+
+<!--    So if you want to restrict to id only, then use idref tag -->
+
+<!-- Following will not work. For Solution, refer: https://technicalrecyclebin.wordpress.com/2014/09/04/idref-in-spring-what-is-the-purpose-of-tag-in-spring/ -->
+<!--         <property name="pointA"> -->
+<!--             <idref bean="point0"/> -->
+<!--         </property> -->
+
+        <property name="pointB">
+<!--        Inner Bean => now can be used only in Triangle  -->
+<!--        if becomes optional, so if you skip it, the code will work -->
+            <bean id="point1" class="org.simplyatul.Point">
+                <property name="x" value="-20" />
+                <property name="y" value="0" />
+            </bean>
+        </property>
+
+        <property name="pointC">
+            <bean class="org.simplyatul.Point">
+                <property name="x" value="20" />
+                <property name="y" value="0" />
+            </bean>
+        </property>
+    </bean>
+
+
+    <alias name="triangle" alias="triangle-alias" />
+    <alias name="point0" alias="point0-alias" />
+    
+</beans>

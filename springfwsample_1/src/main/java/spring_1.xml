@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <bean id="triangle" class="org.simplyatul.Triangle">
+        <!-- Initialization using setter method -->
+        <!-- <property name="type" value="Equilateral" /> -->
+
+        <!-- Initialization using Contructor. setType is commented out -->
+        <constructor-arg index="1" type="int" value="20" />
+        <!-- Spring takes care of converting "20" to integer 20 if type is 
+            not provided -->
+        <!-- However this is required if you have 2 c'tors with String and 
+            Int arg separately -->
+        <!-- index helps to define order of argumnets to c'tor -->
+        <constructor-arg index="0" value="Equilateral" />
+    </bean>
+</beans>
