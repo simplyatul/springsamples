@@ -23,11 +23,20 @@
 
 package org.simplyatul;
 
-public class Triangle {
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class Triangle implements ApplicationContextAware, BeanNameAware {
     private Point pointA;
     private Point pointB;
     private Point pointC;
+    private ApplicationContext ctx = null;
 
+    public Triangle() {
+        System.out.println("In no-arg Triangle c'tor");
+    }
 
     public Point getPointA() {
         return pointA;
@@ -35,6 +44,7 @@ public class Triangle {
 
 
     public void setPointA(Point pointA) {
+        System.out.println("Setting PointA");
         this.pointA = pointA;
     }
 
@@ -65,5 +75,22 @@ public class Triangle {
         System.out.println("PointB: " + pointB.toString());
         System.out.println("PointC: " + pointC.toString());
 
+    }
+
+    public void setBeanName(String name) {
+        System.out.println("Bean Name: " + name);
+        // name is always bean id and neither alias not bean name
+    }
+
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        System.out.println("Setting ApplicationContext");
+        this.ctx = applicationContext;
+
+        /*
+         * Now once you have application context, then you can do multiple things with
+         * this. e.g. rather defining Point Bean in xml file, you can call
+         * ctx.getBean("pointX") and set it in the setter functions
+         */
     }
 }

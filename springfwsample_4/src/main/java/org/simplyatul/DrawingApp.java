@@ -27,9 +27,12 @@ package org.simplyatul;
 /*
  * Ref: 
  * https://javabrains.io/courses/spring_core/lessons/Bean-Autowiring/
+ * https://javabrains.io/courses/spring_core/lessons/Using-ApplicationContextAware/
  * Demonstrate Autowire
  * If you have large amount of Beans, then it is recommended to got for 
  * Explicit bean declaration than autowiring 
+ *
+ * Use of ApplicationContextAware
  */
 
 import org.springframework.context.ApplicationContext;
@@ -40,7 +43,7 @@ public class DrawingApp {
     public static void main(String[] args) {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring_4.xml");
-        Triangle t = (Triangle) ctx.getBean("triangle-name");
+        Triangle t = (Triangle) ctx.getBean("triangle-alias");
         t.draw();
     }
 
