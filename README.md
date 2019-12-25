@@ -20,6 +20,11 @@ Various Spring F/W Samples. Built using STS v4.3.1.RELEASE
 ## springfwsample_4
 - Using Autowire
 - Demostrating ApplicationContextAware
+- Demostrating Bean Lifecycle callbacks - BeanPostProcessor, BeanFactoryPostProcessor
+- PropertyPlaceholderConfigurer Usage
+
+## springfwsample_5
+- Coding To Interfaces
 
 ## License
 MIT
