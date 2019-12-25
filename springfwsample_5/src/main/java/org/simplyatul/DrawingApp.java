@@ -23,31 +23,30 @@
 
 package org.simplyatul;
 
-public class Point {
 
-    private int x;
-    private int y;
-    
-    public int getX() {
-        return x;
-    }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public int getY() {
-        return y;
-    }
-    public void setY(int y) {
-        this.y = y;
-    }
+/*
+ * Coding To Interface
+ * Ref: https://javabrains.io/courses/spring_core/lessons/Coding-To-Interfaces/
+ *
+ */
 
-    @Override
-    public String toString() {
-        return "Point [x=" + x + ", y=" + y + "]";
-    }
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-    public void myInit() {
-        System.out.println("In myInit Point: " + this);
+public class DrawingApp {
+
+    public static void main(String[] args) {
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring_5.xml");
+        Triangle t = (Triangle) ctx.getBean("triangle-alias");
+        t.draw();
+
+        Circle c = (Circle) ctx.getBean("circle");
+        c.draw();
+
+        System.out.println("\nCoding to Interface Way");
+        Shape s = (Shape) ctx.getBean("circle");
+        s.draw();
     }
 
 }

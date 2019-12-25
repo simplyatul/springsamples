@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+    <bean id="triangle" class="org.simplyatul.Triangle" name="triangle-name" autowire="byName">
+<!--     byName => id string should match to object name in Traingle class declaration  -->
+<!--     byName uses setter injection -->
+<!--     Other autowire types are byType, constructor -->
+<!--     If autowire not defined => it is off by default -->
+    </bean>
+
+    <alias name="triangle" alias="triangle-alias"/>
+
+    <bean id="pointA" class="org.simplyatul.Point">
+        <property name="x" value="0" />
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="pointB" class="org.simplyatul.Point">
+        <property name="x" value="-60" />
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="pointC" class="org.simplyatul.Point">
+        <property name="x" value="60" />
+        <property name="y" value="0" />
+    </bean>
+
+    <bean id="circle" class="org.simplyatul.Circle" >
+        <property name="center" ref="pointA" />
+    </bean>
+
+</beans>

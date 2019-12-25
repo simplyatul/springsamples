@@ -35,14 +35,30 @@ package org.simplyatul;
  * Use of ApplicationContextAware
  */
 
-import org.springframework.context.ApplicationContext;
+import org.simplyatul.Triangle;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class DrawingApp {
 
     public static void main(String[] args) {
 
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring_4.xml");
+        //ApplicationContext ctx = new ClassPathXmlApplicationContext("spring_4.xml");
+        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring_4.xml");
+        ctx.registerShutdownHook();
+        /* Ref: https://javabrains.io/courses/spring_core/lessons/Lifecycle-Callbacks/
+         * Only after register shutdown hook, Triangle::destroy() and
+         * Triangle::myDestroy() works
+         *
+         * The alternate way is to do via declaring init and destroy method in xml
+         * see init-method and destroy-method
+         *
+         * Another alternate wya is implementing BeanPostProcessor
+         * Ref: https://javabrains.io/courses/spring_core/lessons/Writing-a-BeanPostProcessor/
+         * Advantage is this can be common post init methods for all the Beans
+         * In above way, one has to write init/destroy method in every Bean
+         */
+
         Triangle t = (Triangle) ctx.getBean("triangle-alias");
         t.draw();
     }

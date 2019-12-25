@@ -23,31 +23,18 @@
 
 package org.simplyatul;
 
-public class Point {
+import org.springframework.beans.factory.config.BeanPostProcessor;
 
-    private int x;
-    private int y;
-    
-    public int getX() {
-        return x;
-    }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public int getY() {
-        return y;
-    }
-    public void setY(int y) {
-        this.y = y;
+public class DisplayNameBeanPostProcessor implements BeanPostProcessor {
+
+    public Object postProcessBeforeInitialization(Object bean, String beanName) {
+        System.out.println("In postProcessBeforeInitialization of Bean: " + beanName);
+        return bean;
     }
 
-    @Override
-    public String toString() {
-        return "Point [x=" + x + ", y=" + y + "]";
-    }
-
-    public void myInit() {
-        System.out.println("In myInit Point: " + this);
+    public Object postProcessAfterInitialization(Object bean, String beanName) {
+        System.out.println("In postProcessAfterInitialization of Bean: " + beanName);
+        return bean;
     }
 
 }

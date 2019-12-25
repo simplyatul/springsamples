@@ -27,7 +27,7 @@ public class Point {
 
     private int x;
     private int y;
-    
+
     public int getX() {
         return x;
     }
@@ -44,10 +44,6 @@ public class Point {
     @Override
     public String toString() {
         return "Point [x=" + x + ", y=" + y + "]";
-    }
-
-    public void myInit() {
-        System.out.println("In myInit Point: " + this);
     }
 
 }

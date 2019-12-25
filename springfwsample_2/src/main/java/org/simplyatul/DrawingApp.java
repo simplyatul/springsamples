@@ -30,7 +30,7 @@ package org.simplyatul;
  * https://javabrains.io/courses/spring_core/lessons/Inner-Beans%2C-Aliases-and-idref/
  * 
  * Diff Vs springbasic_1
- * - Setting/Initializing a member variable of another object (refer spring.xml)
+ * - Setting/Initializing a member variable of another object (refer spring_2.xml)
  * - Inner Beans, Alias and idref
  */
 

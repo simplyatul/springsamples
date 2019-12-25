@@ -25,10 +25,12 @@ package org.simplyatul;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Triangle implements ApplicationContextAware, BeanNameAware {
+public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
     private Point pointA;
     private Point pointB;
     private Point pointC;
@@ -78,8 +80,8 @@ public class Triangle implements ApplicationContextAware, BeanNameAware {
     }
 
     public void setBeanName(String name) {
-        System.out.println("Bean Name: " + name);
-        // name is always bean id and neither alias not bean name
+        System.out.println("In setBeanName. Bean Name: " + name);
+        // name is always bean id and neither alias nor bean name
     }
 
 
@@ -93,4 +95,21 @@ public class Triangle implements ApplicationContextAware, BeanNameAware {
          * ctx.getBean("pointX") and set it in the setter functions
          */
     }
+
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("In afterPropertiesSet Triangle");
+    }
+
+    public void myInit() {
+        System.out.println("In myInit Triangle");
+    }
+
+    public void destroy() throws Exception {
+        System.out.println("In destroy Triangle");
+    }
+
+    public void myDestroy() {
+        System.out.println("In myDestroy Triangle");
+    }
+
 }

@@ -29,9 +29,9 @@ package org.simplyatul;
  * - ApplicationContext is Big Brother of BeanFactory w/ additional functionalities like
  *	- Event Notification
  *	- AOP  
- * - spring.xml moved in class path
+ * - spring_1.xml moved in class path
  * - Setting/Initializing a member variable (property) in Triangle at the time of object creation
- *      - using property and c'tor initialization with Primitive types (refer spring.xml)
+ *      - using property and c'tor initialization with Primitive types (refer spring_1.xml)
  */
 
 import org.springframework.context.ApplicationContext;

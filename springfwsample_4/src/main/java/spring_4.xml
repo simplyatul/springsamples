@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
-<beans>
-
+<beans default-init-method="myInit" default-destroy-method="myDestroy">
+<!-- Spring calls myInit/myDestroy for every Bean if it is available.  -->
+<!-- you can define init and destroy method per bean as well as below line -->
+<!--     <bean id="triangle" class="org.simplyatul.Triangle" name="triangle-name" autowire="byName" init-method="myInit" destroy-method="myDestroy"> -->
     <bean id="triangle" class="org.simplyatul.Triangle" name="triangle-name" autowire="byName">
-<!--     byName => id string should match to object name in Traingle class declaration  -->
+<!--     byName => id string should match to object name in Triangle class declaration  -->
 <!--     byName uses setter injection -->
 <!--     Other autowire types are byType, constructor -->
 <!--     If autowire not defined => it is off by default -->
@@ -13,8 +15,8 @@
     <alias name="triangle" alias="triangle-alias"/>
 
     <bean id="pointA" class="org.simplyatul.Point">
-        <property name="x" value="0" />
-        <property name="y" value="0" />
+        <property name="x" value="${pointA.pointX}" />
+        <property name="y" value="${pointA.pointY}" />
     </bean>
 
     <bean id="pointB" class="org.simplyatul.Point">
@@ -25,6 +27,15 @@
     <bean id="pointC" class="org.simplyatul.Point">
         <property name="x" value="60" />
         <property name="y" value="0" />
+    </bean>
+
+    <bean class="org.simplyatul.DisplayNameBeanPostProcessor" />
+
+    <bean class="org.simplyatul.MyBeanFactoryPostProcessor" />
+
+<!-- // Ref: https://javabrains.io/courses/spring_core/lessons/Writing-a-BeanFactoryPostProcessor/ -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+        <property name="locations" value="pointsconfig.properties" />
     </bean>
 
 </beans>

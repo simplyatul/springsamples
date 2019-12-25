@@ -23,31 +23,18 @@
 
 package org.simplyatul;
 
-public class Point {
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
-    private int x;
-    private int y;
-    
-    public int getX() {
-        return x;
-    }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public int getY() {
-        return y;
-    }
-    public void setY(int y) {
-        this.y = y;
-    }
+// Ref: https://javabrains.io/courses/spring_core/lessons/Writing-a-BeanFactoryPostProcessor/
 
-    @Override
-    public String toString() {
-        return "Point [x=" + x + ", y=" + y + "]";
-    }
+public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
-    public void myInit() {
-        System.out.println("In myInit Point: " + this);
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) 
+            throws BeansException {
+        System.out.println("In MyBeanFactoryPostProcessor::postProcessBeanFactory");
+        // After this method, all Beans were initialized
     }
 
 }

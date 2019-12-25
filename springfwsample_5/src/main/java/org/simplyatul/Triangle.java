@@ -23,31 +23,53 @@
 
 package org.simplyatul;
 
-public class Point {
+public class Triangle implements Shape {
+    private Point pointA;
+    private Point pointB;
+    private Point pointC;
 
-    private int x;
-    private int y;
-    
-    public int getX() {
-        return x;
-    }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public int getY() {
-        return y;
-    }
-    public void setY(int y) {
-        this.y = y;
+    public Triangle() {
+        System.out.println("In no-arg Triangle c'tor");
     }
 
-    @Override
-    public String toString() {
-        return "Point [x=" + x + ", y=" + y + "]";
+    public Point getPointA() {
+        return pointA;
     }
 
-    public void myInit() {
-        System.out.println("In myInit Point: " + this);
+
+    public void setPointA(Point pointA) {
+        System.out.println("Setting PointA");
+        this.pointA = pointA;
     }
+
+
+    public Point getPointB() {
+        return pointB;
+    }
+
+
+    public void setPointB(Point pointB) {
+        this.pointB = pointB;
+    }
+
+
+    public Point getPointC() {
+        return pointC;
+    }
+
+
+    public void setPointC(Point pointC) {
+        this.pointC = pointC;
+    }
+
+
+    public void draw() {
+        System.out.println("In Triangle Draw");
+        System.out.println("PointA: " + pointA.toString());
+        System.out.println("PointB: " + pointB.toString());
+        System.out.println("PointC: " + pointC.toString());
+
+    }
+
 
 }

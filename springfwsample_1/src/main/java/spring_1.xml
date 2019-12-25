@@ -12,7 +12,7 @@
             not provided -->
         <!-- However this is required if you have 2 c'tors with String and 
             Int arg separately -->
-        <!-- index helps to define order of argumnets to c'tor -->
+        <!-- index helps to define order of arguments to c'tor -->
         <constructor-arg index="0" value="Equilateral" />
     </bean>
 </beans>
